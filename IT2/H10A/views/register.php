@@ -2,12 +2,45 @@
     session_start();
     if(isset($_POST["register"]) )
     {
+        $errmess=array();
         if($_POST["pwd"] == $_POST["pwd_check"])
         {
-            /* Vytvoreni asociativniho pole a nasledne ulozeni do cokiny */
-            $user=array("Jmeno"=>$_POST['name'],"Email"=>$_POST['email'],"PWD"=>$_POST['pwd']);
-            setcookie("User", serialize($user), time()+3600, "/");
-            header("Location: ../index.php");
+            if(!strlen($_POST['pwd'])>=8)
+            {
+                array_push($errmess,"Hesla nemaji dostatecny pocet znaku\n");
+            }
+            if(!preg_match('#[0-9]+#',$_POST['pwd']))
+            {
+                array_push($errmess,"Heslo neobsahuje cislice");
+            }
+            if(!preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/',$_POST['pwd']))
+            {
+                array_push($errmess,"Heslo neobsahuje specialni znaky");
+            }
+            if(!preg_match('/[A-Z]/',$_POST['pwd']))
+            {
+                array_push($errmess,"Heslo neobsahuje velka pismena");
+            }
+            if(!preg_match('/[a-z]/',$_POST['pwd']))
+            {
+                array_push($errmess,"Heslo neobsahuje mala pismena");
+            }
+
+            if(sizeof($errmess)==0)
+            {
+                /* Vytvoreni asociativniho pole a nasledne ulozeni do cokiny */
+                $user=array("Jmeno"=>$_POST['name'],"Email"=>$_POST['email'],"PWD"=>$_POST['pwd']);
+                setcookie("User", serialize($user), time()+3600, "/");
+                header("Location: ../index.php");
+            }
+            else
+            {
+                foreach($errmess as $mes)
+                {
+                    $_SESSION['errMess'].=$mes;
+                }
+            }
+
         }
         else{
             $_SESSION['errMess']="Hesla se neshoduji.";
