@@ -1,0 +1,17 @@
+{
+    "fight_rnd_max":100,
+    "bojovnici":[
+    {
+            "name":"Richard",
+            "attack":24,
+            "deff":14,
+            "hp":150
+    },
+    {
+            "name":"Kevin",
+            "attack":15,
+            "deff":20,
+            "hp":125
+    }
+    ]
+}
