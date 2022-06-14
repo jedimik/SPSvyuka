@@ -12,6 +12,42 @@
             "attack":15,
             "deff":20,
             "hp":125
+    },
+    {
+            "name":"Mach",
+            "attack":25,
+            "deff":10,
+            "hp":200
+    },
+    {
+            "name":"Karlos",
+            "attack":12,
+            "deff":40,
+            "hp":75
+    },
+    {
+            "name":"Stan",
+            "attack":15,
+            "deff":15,
+            "hp":125
+    },
+    {
+            "name":"Eric",
+            "attack":10,
+            "deff":5,
+            "hp":250
+    },
+    {
+            "name":"Kyle",
+            "attack":18,
+            "deff":18,
+            "hp":110
+    },
+    {
+            "name":"Kenny",
+            "attack":30,
+            "deff":15,
+            "hp":50
     }
     ]
 }

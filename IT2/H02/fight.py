@@ -28,5 +28,10 @@ class Fight():
             self.who_attack(val)
         if self.__boj1.get_hp()<0:
             print(f"Vyhral bojovnik:{self.__boj2.get_name()}.")
+            return self.__boj2
         else:
             print(f"Vyhral bojovnik:{self.__boj1.get_name()}.")
+            return self.__boj1
+
+    def to_string(self):
+        return f"Bojovnik:{self.__boj1.get_name()}_vs_Bojovnik:{self.__boj2.get_name()}"
